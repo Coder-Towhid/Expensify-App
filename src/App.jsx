@@ -9,6 +9,7 @@ import ExpenseDashboardPage from './components/ExpenseDashboardPage';
 import Header from './components/Header';
 import Help from './components/HelpPage';
 import NotFoundPage from './components/NotFoundPage';
+import './firebase/firebase';
 import getVisibleExpense from './selectors/expenses';
 import configureStore from './store/configureStore';
 
