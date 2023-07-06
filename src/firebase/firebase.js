@@ -1,10 +1,8 @@
 
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set } from "firebase/database";
-// Follow this pattern to import other Firebase services
-// import { } from 'firebase/<service>';
+import { getDatabase, onValue, ref, remove, set } from "firebase/database";
 
-// TODO: Replace the following with your app's Firebase project configuration
+
 const firebaseConfig = {
     apiKey: "AIzaSyAD8-Huc9Z_YtEWHthare_CGwdxdynS1yE",
     authDomain: "expensify-4a804.firebaseapp.com",
@@ -21,24 +19,27 @@ const firebaseConfig = {
    
    const db = getDatabase();
 
-   set(ref(db, 'users/' + 6), {
-     username: "towhid",
+
+   set(ref(db, 'users/' + 7), {
+     username: "Islam",
      email: 'email', 
      profile_picture : 'imageUrl'
    });
 
-   set(ref(db, 'users/6/username'),{
-    username:''
-   })
+   set(ref(db, 'users/7/username' ), 'Towhid Islam update').then(()=>{
+    console.log("data is updated")
+   }).catch((error)=>{
+    console.log('this failed.', error)
+   });
 
+   remove(ref(db, 'users/6')).then(function() {
+    console.log("Remove succeeded.")
+  })
+  .catch(function(error) {
+    console.log("Remove failed: " + error.message)
+  })
 
-// function writeUserData(userId, name, email, imageUrl) {
-//   const db = getDatabase();
-//   set(ref(db, 'users/' + userId), {
-//     username: name,
-//     email: email, 
-//     profile_picture : imageUrl
-//   });
-// }
-
-// writeUserData(1, 'bbbbbbb', 'aaa', '113qwadq')
+  const data = ref(db, 'users/7')
+  onValue(data, (snapshot) => {
+    console.log([snapshot.val()])
+  })
