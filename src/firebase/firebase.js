@@ -1,6 +1,6 @@
 
 import { initializeApp } from "firebase/app";
-import { getDatabase, onValue, ref, remove, set } from "firebase/database";
+import { getDatabase, push, ref } from "firebase/database";
 
 
 const firebaseConfig = {
@@ -18,28 +18,51 @@ const firebaseConfig = {
    initializeApp(firebaseConfig);
    
    const db = getDatabase();
+   
+   export { db as default };
 
 
-   set(ref(db, 'users/' + 7), {
-     username: "Islam",
-     email: 'email', 
-     profile_picture : 'imageUrl'
-   });
 
-   set(ref(db, 'users/7/username' ), 'Towhid Islam update').then(()=>{
-    console.log("data is updated")
-   }).catch((error)=>{
-    console.log('this failed.', error)
-   });
-
-   remove(ref(db, 'users/6')).then(function() {
-    console.log("Remove succeeded.")
-  })
-  .catch(function(error) {
-    console.log("Remove failed: " + error.message)
+  push(ref(db, "Expenses/"),{
+    description: 'Rent',
+    note: ' ',
+    amount: '10445',
+    createdAt: 9888410
   })
 
-  const data = ref(db, 'users/7')
-  onValue(data, (snapshot) => {
-    console.log([snapshot.val()])
-  })
+
+
+
+
+
+  //  set(ref(db, 'users/' + 9), {
+  //    username: "Islam",
+  //    email: 'email', 
+  //    profile_picture : 'imageUrl'
+  //  });
+
+  //  set(ref(db, 'users/7/username' ), 'Towhid Islam update').then(()=>{
+  //   console.log("data is updated")
+  //  }).catch((error)=>{
+  //   console.log('this failed.', error)
+  //  });
+
+  //  remove(ref(db, 'users/6')).then(function() {
+  //   console.log("Remove succeeded.")
+  // })
+  // .catch(function(error) {
+  //   console.log("Remove failed: " + error.message)
+  // })
+
+  // const data = ref(db, 'Expenses/')
+  // onValue(data, (snapshot) => {
+  //   const expenses = []
+
+  //   snapshot.forEach((childSnapshot) =>{
+  //     expenses.push({
+  //       id: childSnapshot.key,
+  //       ...childSnapshot.val()
+  //     })
+  //   })
+  //   console.log(expenses)
+  // })
