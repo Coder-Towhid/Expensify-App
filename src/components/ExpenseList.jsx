@@ -10,7 +10,7 @@ const ExpenseList = (props)=>(
         <h1>EXPENSE LIST</h1>
 
      
-      
+        {console.log("propos console",props)}
         {props.expenses.map((expense)=>{
             
             return <ExpenseListItem key={expense.id} {...expense}/>

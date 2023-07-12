@@ -1,6 +1,6 @@
 
 import { initializeApp } from "firebase/app";
-import { getDatabase, push, ref } from "firebase/database";
+import { getDatabase } from "firebase/database";
 
 
 const firebaseConfig = {
@@ -23,12 +23,12 @@ const firebaseConfig = {
 
 
 
-  push(ref(db, "Expenses/"),{
-    description: 'Rent',
-    note: ' ',
-    amount: '10445',
-    createdAt: 9888410
-  })
+  // push(ref(db, "Expenses/"),{
+  //   description: 'Rent',
+  //   note: ' ',
+  //   amount: '10445',
+  //   createdAt: 9888410
+  // })
 
 
 

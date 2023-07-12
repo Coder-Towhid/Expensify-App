@@ -9,6 +9,7 @@ import ExpenseForm from './ExpenseForm';
 
 const AddExpensePage = (props)=>{
 const navigate = useNavigate()
+
     return(
         <div>
             <h1>ADD Expense</h1>
